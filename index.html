@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10401 Sweetheart Strapless Bra Wear-Test Report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: oklch(23% 0.025 255);
+      --muted: oklch(47% 0.025 255);
+      --subtle: oklch(62% 0.018 255);
+      --paper: oklch(97.5% 0.008 255);
+      --surface: oklch(99% 0.005 255);
+      --surface-2: oklch(94.5% 0.014 255);
+      --line: oklch(86% 0.016 255);
+      --navy: oklch(26% 0.085 255);
+      --red: oklch(48% 0.185 20);
+      --green: oklch(47% 0.13 155);
+      --amber: oklch(58% 0.15 70);
+      --blue: oklch(47% 0.11 245);
+      --shadow: 0 14px 34px oklch(18% 0.035 255 / 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 14px/1.5 "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 12px max(20px, calc((100vw - 1180px) / 2));
+      background: oklch(20% 0.06 255 / 0.97);
+      color: oklch(96% 0.01 255);
+      box-shadow: 0 1px 0 oklch(100% 0 0 / 0.08), 0 8px 24px oklch(14% 0.04 255 / 0.24);
+    }
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      min-width: max-content;
+      font-weight: 750;
+      letter-spacing: 0.01em;
+    }
+    .brand span {
+      color: oklch(78% 0.12 25);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .navlinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-left: auto;
+    }
+    .navlinks a {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 6px;
+      color: oklch(88% 0.014 255);
+      font-size: 12px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .navlinks a:hover,
+    .navlinks a:focus-visible {
+      background: oklch(100% 0 0 / 0.1);
+      outline: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 30px 0 64px;
+      min-width: 0;
+    }
+    .report-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      max-width: 780px;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: 0;
+      color: var(--navy);
+      overflow-wrap: anywhere;
+    }
+    .dek {
+      max-width: 760px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .decision-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .decision-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .decision-title {
+      margin-top: 6px;
+      color: var(--red);
+      font-size: 22px;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+    .decision-copy {
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: 13px;
+    }
+    .threshold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 28px;
+      margin-top: 14px;
+      padding: 0 10px;
+      border: 1px solid oklch(82% 0.035 75);
+      border-radius: 6px;
+      background: oklch(96% 0.04 80);
+      color: oklch(35% 0.08 65);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .section {
+      margin-top: 24px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: clip;
+      min-width: 0;
+    }
+    .section > header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 22px;
+      background: linear-gradient(180deg, oklch(99% 0.006 255), oklch(96% 0.01 255));
+      border-bottom: 1px solid var(--line);
+    }
+    h2 {
+      color: var(--navy);
+      font-size: 19px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    .section-note {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+    .section-body { padding: 22px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .card {
+      min-height: 118px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface-2);
+      min-width: 0;
+    }
+    .card.critical { background: oklch(96% 0.035 20); border-color: oklch(78% 0.08 20); }
+    .card.good { background: oklch(96% 0.035 155); border-color: oklch(79% 0.08 155); }
+    .card.warn { background: oklch(96% 0.045 78); border-color: oklch(82% 0.1 78); }
+    .metric {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .value {
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 850;
+      color: var(--navy);
+    }
+    .card.critical .value { color: var(--red); }
+    .card.good .value { color: var(--green); }
+    .card.warn .value { color: var(--amber); }
+    .unit {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+    }
+    .label {
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .sub {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .status.pass { background: oklch(92% 0.06 155); color: oklch(34% 0.11 155); }
+    .status.fail { background: oklch(92% 0.06 20); color: oklch(38% 0.15 20); }
+    .status.watch { background: oklch(93% 0.07 78); color: oklch(38% 0.1 70); }
+    .status.neutral { background: oklch(90% 0.016 255); color: var(--muted); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 16px;
+      min-width: 0;
+    }
+    .panel h3 {
+      color: var(--navy);
+      font-size: 15px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .callout {
+      padding: 14px 16px;
+      border: 1px solid oklch(81% 0.08 20);
+      border-radius: 8px;
+      background: oklch(96% 0.035 20);
+      color: oklch(34% 0.11 20);
+      font-weight: 650;
+    }
+    .callout strong { color: oklch(30% 0.12 20); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    th {
+      padding: 9px 10px;
+      background: var(--navy);
+      color: oklch(96% 0.01 255);
+      text-align: left;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    tbody tr:nth-child(even) td { background: oklch(97% 0.008 255); }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .bad { color: var(--red); font-weight: 800; }
+    .good-text { color: var(--green); font-weight: 800; }
+    .muted { color: var(--muted); }
+    .small { font-size: 12px; color: var(--muted); }
+
+    .bar-list { display: grid; gap: 10px; }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr) 58px;
+      gap: 10px;
+      align-items: center;
+    }
+    .bar-label {
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+    .bar-track {
+      height: 15px;
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 999px;
+      background: oklch(88% 0.016 255);
+    }
+    .bar-fill {
+      height: 100%;
+      width: calc(var(--value) * 1%);
+      border-radius: inherit;
+      background: var(--blue);
+    }
+    .bar-fill.red { background: var(--red); }
+    .bar-fill.green { background: var(--green); }
+    .bar-fill.amber { background: var(--amber); }
+    .bar-value {
+      color: var(--ink);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-size: 12px;
+      font-weight: 750;
+    }
+    .threshold-line {
+      position: relative;
+      padding-top: 4px;
+    }
+    .threshold-line::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 70%;
+      width: 1px;
+      background: oklch(45% 0.1 70 / 0.7);
+    }
+    .stacked {
+      display: grid;
+      gap: 9px;
+    }
+    .stack-row {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+    }
+    .stack-track {
+      display: flex;
+      height: 18px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+    }
+    .seg { width: calc(var(--value) * 1%); }
+    .seg.red { background: var(--red); }
+    .seg.green { background: var(--green); }
+    .seg.blue { background: var(--blue); }
+    .seg.gray { background: oklch(72% 0.014 255); }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px 0 14px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .key {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: var(--swatch);
+    }
+
+    .divider {
+      height: 1px;
+      margin: 22px 0;
+      background: var(--line);
+    }
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .method {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface-2);
+    }
+    .method b { display: block; margin-bottom: 4px; color: var(--navy); }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      max-width: 100%;
+    }
+    .table-wrap table { min-width: 760px; }
+    .footnote {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 920px) {
+      .topbar { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .brand { min-width: 0; flex-wrap: wrap; }
+      .navlinks { margin-left: 0; max-width: 100%; }
+      .report-head, .two-col, .three-col { grid-template-columns: 1fr; }
+      .cards, .method-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section > header { flex-direction: column; }
+      .section-note { text-align: left; }
+    }
+    @media (max-width: 560px) {
+      .page { width: min(100% - 20px, 1180px); padding-top: 18px; }
+      h1 { font-size: 26px; }
+      .cards, .method-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: minmax(72px, 0.9fr) minmax(92px, 1.4fr) 48px; gap: 8px; }
+      .stack-row { grid-template-columns: 72px minmax(0, 1fr); }
+      .section-body, .section > header { padding: 16px; }
+      .navlinks {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+      .navlinks a { padding: 0 8px; flex: 0 0 auto; }
+    }
+    @media print {
+      .topbar { position: static; box-shadow: none; }
+      .page { width: 100%; padding: 12px; }
+      .section { break-inside: avoid; }
+      body { background: var(--surface); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="brand">10401 Wear-Test <span>Final raw-data audit</span></div>
+    <div class="navlinks">
+      <a href="#decision">Decision</a>
+      <a href="#fit">Fit</a>
+      <a href="#ddd">DDD+</a>
+      <a href="#underband">Underband</a>
+      <a href="#size">Size</a>
+      <a href="#preference">10400</a>
+      <a href="#method">Method</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <section class="report-head" id="decision">
+      <div>
+        <h1>10401 Sweetheart Strapless Bra: conclusive wear-test results</h1>
+        <p class="dek">Raw CSV analysis for Shapermint's new 10401 Sweetheart Wireless Strapless Bra. The 70.0% passable threshold is applied to rating and positive-response metrics. Partial data is included using the answered base for each question.</p>
+      </div>
+      <aside class="decision-panel">
+        <div class="decision-label">Bulk production read</div>
+        <div class="decision-title">Do not move forward as-is.</div>
+        <p class="decision-copy">The bra misses the 70.0% threshold on overall 4-5 rating, fit 4-5 rating, comfort 4-5 rating, true-to-size, and support/lift. It performs for many non-DDD+ respondents, but DDD+ and the underband grading issues are material.</p>
+        <div class="threshold">Passable threshold: 70.0%</div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <header>
+        <div>
+          <h2>Executive Summary</h2>
+        </div>
+        <p class="section-note">All displayed ratings and percentages are rounded to one decimal place from respondent-level raw data.</p>
+      </header>
+      <div class="section-body">
+        <div class="cards">
+          <article class="card critical">
+            <div class="metric"><div class="value">68.6%</div><div class="unit">n=140</div></div>
+            <div class="label">Overall rated 4-5</div>
+            <div class="sub"><span class="status fail">Below 70.0%</span> Avg rating 4.1/5.0</div>
+          </article>
+          <article class="card critical">
+            <div class="metric"><div class="value">65.7%</div><div class="unit">n=140</div></div>
+            <div class="label">Fit rated 4-5</div>
+            <div class="sub"><span class="status fail">Below 70.0%</span> Avg fit 3.8/5.0</div>
+          </article>
+          <article class="card critical">
+            <div class="metric"><div class="value">61.3%</div><div class="unit">n=137</div></div>
+            <div class="label">Comfort rated 4-5</div>
+            <div class="sub"><span class="status fail">Below 70.0%</span> Avg comfort 3.7/5.0</div>
+          </article>
+          <article class="card good">
+            <div class="metric"><div class="value">72.7%</div><div class="unit">n=132</div></div>
+            <div class="label">Ranked top 2 vs. other bras</div>
+            <div class="sub"><span class="status pass">Passes</span> Best or better than average</div>
+          </article>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="two-col">
+          <div class="panel">
+            <h3>What is working</h3>
+            <div class="bar-list threshold-line">
+              <div class="bar-row"><div class="bar-label">Neckline love</div><div class="bar-track"><div class="bar-fill green" style="--value:81.2"></div></div><div class="bar-value">81.2%</div></div>
+              <div class="bar-row"><div class="bar-label">Smooth under clothing</div><div class="bar-track"><div class="bar-fill green" style="--value:84.1"></div></div><div class="bar-value">84.1%</div></div>
+              <div class="bar-row"><div class="bar-label">Underband stays</div><div class="bar-track"><div class="bar-fill green" style="--value:86.5"></div></div><div class="bar-value">86.5%</div></div>
+              <div class="bar-row"><div class="bar-label">Anti-slip 4-5</div><div class="bar-track"><div class="bar-fill green" style="--value:80.3"></div></div><div class="bar-value">80.3%</div></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>What blocks bulk as-is</h3>
+            <div class="bar-list threshold-line">
+              <div class="bar-row"><div class="bar-label">Support right</div><div class="bar-track"><div class="bar-fill red" style="--value:61.7"></div></div><div class="bar-value">61.7%</div></div>
+              <div class="bar-row"><div class="bar-label">True to size</div><div class="bar-track"><div class="bar-fill red" style="--value:61.4"></div></div><div class="bar-value">61.4%</div></div>
+              <div class="bar-row"><div class="bar-label">DDD+ fit 4-5</div><div class="bar-track"><div class="bar-fill red" style="--value:43.8"></div></div><div class="bar-value">43.8%</div></div>
+              <div class="bar-row"><div class="bar-label">DDD+ support right</div><div class="bar-track"><div class="bar-fill red" style="--value:40.0"></div></div><div class="bar-value">40.0%</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:18px">
+          <strong>Conclusion:</strong> the 10401 has a viable design proposition, but it is not production-ready without targeted changes. The most consequential defects are DDD+ support/lift and cup depth, plus underband tightness at S, M, 3XL, and 4XL.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fit">
+      <header>
+        <div><h2>Fit and Product Performance</h2></div>
+        <p class="section-note">Bases vary by answered question: overall/fit n=140, band/cup/stay-in-place n=139, support n=133.</p>
+      </header>
+      <div class="section-body">
+        <div class="three-col">
+          <div class="panel">
+            <h3>True to size</h3>
+            <div class="stacked">
+              <div class="stack-row"><span class="bar-label">Overall</span><div class="stack-track"><div class="seg red" style="--value:24.3" title="Runs small 24.3%"></div><div class="seg green" style="--value:61.4" title="True to size 61.4%"></div><div class="seg blue" style="--value:5.0" title="Runs large 5.0%"></div><div class="seg gray" style="--value:9.3" title="Unsure 9.3%"></div></div></div>
+            </div>
+            <div class="legend">
+              <span class="key"><span class="swatch" style="--swatch:var(--red)"></span>Runs small 24.3%</span>
+              <span class="key"><span class="swatch" style="--swatch:var(--green)"></span>True 61.4%</span>
+              <span class="key"><span class="swatch" style="--swatch:var(--blue)"></span>Runs large 5.0%</span>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Band fit</h3>
+            <div class="stack-row"><span class="bar-label">n=139</span><div class="stack-track"><div class="seg red" style="--value:20.1"></div><div class="seg green" style="--value:77.7"></div><div class="seg blue" style="--value:2.2"></div></div></div>
+            <div class="legend">
+              <span class="key"><span class="swatch" style="--swatch:var(--red)"></span>Too tight 20.1%</span>
+              <span class="key"><span class="swatch" style="--swatch:var(--green)"></span>Just right 77.7%</span>
+              <span class="key"><span class="swatch" style="--swatch:var(--blue)"></span>Too loose 2.2%</span>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Cup fit</h3>
+            <div class="stack-row"><span class="bar-label">n=139</span><div class="stack-track"><div class="seg red" style="--value:25.2"></div><div class="seg green" style="--value:71.2"></div><div class="seg blue" style="--value:3.6"></div></div></div>
+            <div class="legend">
+              <span class="key"><span class="swatch" style="--swatch:var(--red)"></span>Too small 25.2%</span>
+              <span class="key"><span class="swatch" style="--swatch:var(--green)"></span>Just right 71.2%</span>
+              <span class="key"><span class="swatch" style="--swatch:var(--blue)"></span>Too large 3.6%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="two-col">
+          <div class="panel">
+            <h3>Band too tight by size</h3>
+            <div class="bar-list">
+              <div class="bar-row"><div class="bar-label">S (5/13)</div><div class="bar-track"><div class="bar-fill red" style="--value:38.5"></div></div><div class="bar-value">38.5%</div></div>
+              <div class="bar-row"><div class="bar-label">M (5/17)</div><div class="bar-track"><div class="bar-fill red" style="--value:29.4"></div></div><div class="bar-value">29.4%</div></div>
+              <div class="bar-row"><div class="bar-label">L (1/27)</div><div class="bar-track"><div class="bar-fill green" style="--value:3.7"></div></div><div class="bar-value">3.7%</div></div>
+              <div class="bar-row"><div class="bar-label">XL (2/25)</div><div class="bar-track"><div class="bar-fill green" style="--value:8.0"></div></div><div class="bar-value">8.0%</div></div>
+              <div class="bar-row"><div class="bar-label">2XL (5/24)</div><div class="bar-track"><div class="bar-fill amber" style="--value:20.8"></div></div><div class="bar-value">20.8%</div></div>
+              <div class="bar-row"><div class="bar-label">3XL (7/25)</div><div class="bar-track"><div class="bar-fill red" style="--value:28.0"></div></div><div class="bar-value">28.0%</div></div>
+              <div class="bar-row"><div class="bar-label">4XL (3/8)</div><div class="bar-track"><div class="bar-fill red" style="--value:37.5"></div></div><div class="bar-value">37.5%</div></div>
+            </div>
+            <p class="footnote">S, M, 3XL, and 4XL are the disproportionate tight-underband groups. 4XL is provisional because n=8.</p>
+          </div>
+          <div class="panel">
+            <h3>Support not enough by size</h3>
+            <div class="bar-list">
+              <div class="bar-row"><div class="bar-label">S (3/12)</div><div class="bar-track"><div class="bar-fill green" style="--value:25.0"></div></div><div class="bar-value">25.0%</div></div>
+              <div class="bar-row"><div class="bar-label">M (3/17)</div><div class="bar-track"><div class="bar-fill green" style="--value:17.6"></div></div><div class="bar-value">17.6%</div></div>
+              <div class="bar-row"><div class="bar-label">L (12/24)</div><div class="bar-track"><div class="bar-fill red" style="--value:50.0"></div></div><div class="bar-value">50.0%</div></div>
+              <div class="bar-row"><div class="bar-label">XL (11/25)</div><div class="bar-track"><div class="bar-fill red" style="--value:44.0"></div></div><div class="bar-value">44.0%</div></div>
+              <div class="bar-row"><div class="bar-label">2XL (9/24)</div><div class="bar-track"><div class="bar-fill amber" style="--value:37.5"></div></div><div class="bar-value">37.5%</div></div>
+              <div class="bar-row"><div class="bar-label">3XL (10/23)</div><div class="bar-track"><div class="bar-fill red" style="--value:43.5"></div></div><div class="bar-value">43.5%</div></div>
+              <div class="bar-row"><div class="bar-label">4XL (3/8)</div><div class="bar-track"><div class="bar-fill amber" style="--value:37.5"></div></div><div class="bar-value">37.5%</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ddd">
+      <header>
+        <div><h2>DDD+ Deep Dive</h2></div>
+        <p class="section-note">DDD+ classification: DDD/DDDD or explicit E-K cup marker in the usual bra-size field. DDD+ n=32 overall; support/lift base n=30 because two DDD+ respondents skipped that question.</p>
+      </header>
+      <div class="section-body">
+        <div class="callout">
+          <strong>Primary fit failure:</strong> DDD+ respondents fail on fit, comfort, support/lift, and cup depth. 46.9% say cups are too small, and 60.0% say there is not enough support and lift.
+        </div>
+        <div class="divider"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Metric</th><th class="num">DDD+</th><th class="num">Non-DDD+</th><th class="num">Gap</th><th>Read</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Overall rating avg</td><td class="num bad">3.7 (n=32)</td><td class="num good-text">4.2 (n=108)</td><td class="num bad">-0.5</td><td>DDD+ pulls the overall result below threshold.</td></tr>
+              <tr><td>Overall rated 4-5</td><td class="num bad">50.0%</td><td class="num good-text">74.1%</td><td class="num bad">-24.1pp</td><td>Non-DDD+ passes; DDD+ clearly fails.</td></tr>
+              <tr><td>Fit rating avg</td><td class="num bad">3.2 (n=32)</td><td class="num good-text">4.0 (n=108)</td><td class="num bad">-0.8</td><td>Largest average-rating gap.</td></tr>
+              <tr><td>Fit rated 4-5</td><td class="num bad">43.8%</td><td class="num good-text">72.2%</td><td class="num bad">-28.4pp</td><td>Fit fails for DDD+ but passes for non-DDD+.</td></tr>
+              <tr><td>Comfort rated 4-5</td><td class="num bad">46.9%</td><td class="num">65.7%</td><td class="num bad">-18.8pp</td><td>Comfort is below threshold in both groups, worse in DDD+.</td></tr>
+              <tr><td>Runs small</td><td class="num bad">34.4%</td><td class="num">21.3%</td><td class="num bad">+13.1pp</td><td>DDD+ are more likely to need a size-up.</td></tr>
+              <tr><td>Band too tight</td><td class="num">15.6%</td><td class="num">21.5%</td><td class="num good-text">-5.9pp</td><td>Band tightness is not DDD+-driven.</td></tr>
+              <tr><td>Cups too small</td><td class="num bad">46.9%</td><td class="num">18.7%</td><td class="num bad">+28.2pp</td><td>Main DDD+ product issue.</td></tr>
+              <tr><td>Not enough support/lift</td><td class="num bad">60.0%</td><td class="num">32.0%</td><td class="num bad">+28.0pp</td><td>Confirms the support and lift failure.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="two-col">
+          <div class="panel">
+            <h3>DDD+ concentration by alpha size</h3>
+            <div class="bar-list">
+              <div class="bar-row"><div class="bar-label">S (1/13)</div><div class="bar-track"><div class="bar-fill amber" style="--value:7.7"></div></div><div class="bar-value">7.7%</div></div>
+              <div class="bar-row"><div class="bar-label">M (0/18)</div><div class="bar-track"><div class="bar-fill green" style="--value:0"></div></div><div class="bar-value">0.0%</div></div>
+              <div class="bar-row"><div class="bar-label">L (6/28)</div><div class="bar-track"><div class="bar-fill amber" style="--value:21.4"></div></div><div class="bar-value">21.4%</div></div>
+              <div class="bar-row"><div class="bar-label">XL (5/25)</div><div class="bar-track"><div class="bar-fill amber" style="--value:20.0"></div></div><div class="bar-value">20.0%</div></div>
+              <div class="bar-row"><div class="bar-label">2XL (10/24)</div><div class="bar-track"><div class="bar-fill red" style="--value:41.7"></div></div><div class="bar-value">41.7%</div></div>
+              <div class="bar-row"><div class="bar-label">3XL (7/25)</div><div class="bar-track"><div class="bar-fill amber" style="--value:28.0"></div></div><div class="bar-value">28.0%</div></div>
+              <div class="bar-row"><div class="bar-label">4XL (3/8)</div><div class="bar-track"><div class="bar-fill red" style="--value:37.5"></div></div><div class="bar-value">37.5%</div></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Required product changes for DDD+</h3>
+            <p><strong>Cup depth:</strong> increase cup volume/depth for DDD+ mapped into larger alpha sizes, especially 2XL-4XL.</p>
+            <p style="margin-top:10px"><strong>Support and lift:</strong> DDD+ support is not passable: only 40.0% report the right support/lift level.</p>
+            <p style="margin-top:10px"><strong>Fit guidance:</strong> DDD+ respondents are more likely to report the garment runs small, but the band itself is not the root cause. The failure is cup depth plus support architecture.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="underband">
+      <header>
+        <div><h2>Underband Too Tight Deep Dive</h2></div>
+        <p class="section-note">Band too tight is 28/139 respondents, or 20.1%. Only 5 of those 28 are DDD+.</p>
+      </header>
+      <div class="section-body">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Metric</th><th class="num">Band too tight</th><th class="num">Band not tight</th><th class="num">Gap</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Overall rating avg</td><td class="num bad">3.4 (n=28)</td><td class="num good-text">4.2 (n=111)</td><td class="num bad">-0.8</td></tr>
+              <tr><td>Overall rated 4-5</td><td class="num bad">39.3%</td><td class="num good-text">75.7%</td><td class="num bad">-36.4pp</td></tr>
+              <tr><td>Fit rating avg</td><td class="num bad">2.7 (n=28)</td><td class="num good-text">4.1 (n=111)</td><td class="num bad">-1.4</td></tr>
+              <tr><td>Fit rated 4-5</td><td class="num bad">25.0%</td><td class="num good-text">75.7%</td><td class="num bad">-50.7pp</td></tr>
+              <tr><td>Comfort rating avg</td><td class="num bad">2.7 (n=27)</td><td class="num good-text">3.9 (n=110)</td><td class="num bad">-1.2</td></tr>
+              <tr><td>Comfort rated 4-5</td><td class="num bad">22.2%</td><td class="num good-text">70.9%</td><td class="num bad">-48.7pp</td></tr>
+              <tr><td>Runs small</td><td class="num bad">67.9%</td><td class="num">13.5%</td><td class="num bad">+54.4pp</td></tr>
+              <tr><td>Constant adjusting/slipping</td><td class="num">14.3%</td><td class="num">8.1%</td><td class="num bad">+6.2pp</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="footnote">The underband issue is a separate grading problem from DDD+: DDD+ overlap is 5/28, or 17.9% of band-too-tight respondents.</p>
+      </div>
+    </section>
+
+    <section class="section" id="size">
+      <header>
+        <div><h2>Key Metrics by Size</h2></div>
+        <p class="section-note">Received-size n: S=13, M=18, L=28, XL=25, 2XL=24, 3XL=25, 4XL=8. Each metric uses its answered base.</p>
+      </header>
+      <div class="section-body">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Size</th><th class="num">Overall avg</th><th class="num">Overall 4-5</th><th class="num">Fit avg</th><th class="num">Fit 4-5</th><th class="num">Comfort avg</th><th class="num">Comfort 4-5</th><th class="num">Band tight</th><th class="num">Cup small</th><th class="num">Not enough support</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>S</td><td class="num">4.1</td><td class="num bad">69.2%</td><td class="num">3.6</td><td class="num bad">69.2%</td><td class="num">3.3</td><td class="num bad">61.5%</td><td class="num bad">38.5%</td><td class="num">30.8%</td><td class="num">25.0%</td></tr>
+              <tr><td>M</td><td class="num good-text">4.5</td><td class="num good-text">88.2%</td><td class="num good-text">4.1</td><td class="num good-text">76.5%</td><td class="num">3.9</td><td class="num good-text">70.6%</td><td class="num bad">29.4%</td><td class="num">11.8%</td><td class="num">17.6%</td></tr>
+              <tr><td>L</td><td class="num">4.0</td><td class="num bad">64.3%</td><td class="num">3.8</td><td class="num good-text">71.4%</td><td class="num">3.5</td><td class="num bad">56.0%</td><td class="num">3.7%</td><td class="num">14.8%</td><td class="num bad">50.0%</td></tr>
+              <tr><td>XL</td><td class="num">3.7</td><td class="num bad">60.0%</td><td class="num">3.7</td><td class="num bad">52.0%</td><td class="num">3.6</td><td class="num bad">56.0%</td><td class="num">8.0%</td><td class="num">28.0%</td><td class="num bad">44.0%</td></tr>
+              <tr><td>2XL</td><td class="num good-text">4.3</td><td class="num good-text">79.2%</td><td class="num">4.0</td><td class="num bad">66.7%</td><td class="num">3.9</td><td class="num bad">66.7%</td><td class="num">20.8%</td><td class="num bad">41.7%</td><td class="num">37.5%</td></tr>
+              <tr><td>3XL</td><td class="num good-text">4.2</td><td class="num good-text">72.0%</td><td class="num">3.9</td><td class="num good-text">72.0%</td><td class="num">3.8</td><td class="num bad">68.0%</td><td class="num bad">28.0%</td><td class="num">24.0%</td><td class="num bad">43.5%</td></tr>
+              <tr><td>4XL*</td><td class="num">3.5</td><td class="num bad">25.0%</td><td class="num">3.5</td><td class="num bad">37.5%</td><td class="num">3.6</td><td class="num bad">37.5%</td><td class="num bad">37.5%</td><td class="num">25.0%</td><td class="num">37.5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="footnote">* 4XL n=8 is provisional. M has 18 received-size respondents, but 17 answered the rating and band-fit questions.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <header>
+        <div><h2>Body Shape Read</h2></div>
+        <p class="section-note">Body-shape findings are secondary to DDD+ and size grading, but they help locate where experience is weakest.</p>
+      </header>
+      <div class="section-body">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Body shape</th><th class="num">Received n</th><th class="num">Overall avg</th><th class="num">Overall 4-5</th><th class="num">Fit avg</th><th class="num">Fit 4-5</th><th class="num">Comfort avg</th><th class="num">Comfort 4-5</th><th class="num">Cup small</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Rectangle</td><td class="num">21</td><td class="num">4.0</td><td class="num bad">65.0%</td><td class="num">3.5</td><td class="num bad">60.0%</td><td class="num">3.3</td><td class="num bad">60.0%</td><td class="num">15.0%</td></tr>
+              <tr><td>Pear</td><td class="num">26</td><td class="num">4.1</td><td class="num good-text">73.1%</td><td class="num">4.0</td><td class="num good-text">76.9%</td><td class="num">4.0</td><td class="num bad">69.2%</td><td class="num">23.1%</td></tr>
+              <tr><td>Hourglass</td><td class="num">37</td><td class="num">4.1</td><td class="num good-text">70.3%</td><td class="num">4.0</td><td class="num bad">67.6%</td><td class="num">3.8</td><td class="num bad">66.7%</td><td class="num">24.3%</td></tr>
+              <tr><td>Apple</td><td class="num">50</td><td class="num">4.1</td><td class="num good-text">70.0%</td><td class="num">3.8</td><td class="num bad">64.0%</td><td class="num">3.6</td><td class="num bad">58.3%</td><td class="num">26.5%</td></tr>
+              <tr><td>Inverted triangle*</td><td class="num">7</td><td class="num">3.7</td><td class="num bad">42.9%</td><td class="num">3.4</td><td class="num bad">42.9%</td><td class="num">3.0</td><td class="num bad">28.6%</td><td class="num bad">57.1%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="footnote">* Inverted triangle n=7 is provisional.</p>
+      </div>
+    </section>
+
+    <section class="section" id="preference">
+      <header>
+        <div><h2>Within-Survey Preference vs. 10400</h2></div>
+        <p class="section-note">The CSV supports preference comparisons only. Prior 10400 average-rating benchmarks are not reproduced here because they are not in this raw file.</p>
+      </header>
+      <div class="section-body">
+        <div class="two-col">
+          <div class="panel">
+            <h3>Preference, all respondents (n=141)</h3>
+            <div class="bar-list">
+              <div class="bar-row"><div class="bar-label">Prefer 10401</div><div class="bar-track"><div class="bar-fill green" style="--value:31.9"></div></div><div class="bar-value">31.9%</div></div>
+              <div class="bar-row"><div class="bar-label">Like both</div><div class="bar-track"><div class="bar-fill green" style="--value:31.9"></div></div><div class="bar-value">31.9%</div></div>
+              <div class="bar-row"><div class="bar-label">Prefer 10400</div><div class="bar-track"><div class="bar-fill amber" style="--value:17.7"></div></div><div class="bar-value">17.7%</div></div>
+              <div class="bar-row"><div class="bar-label">Dislike both</div><div class="bar-track"><div class="bar-fill red" style="--value:4.3"></div></div><div class="bar-value">4.3%</div></div>
+              <div class="bar-row"><div class="bar-label">Do not own</div><div class="bar-track"><div class="bar-fill gray" style="--value:9.2"></div></div><div class="bar-value">9.2%</div></div>
+              <div class="bar-row"><div class="bar-label">Other</div><div class="bar-track"><div class="bar-fill gray" style="--value:5.0"></div></div><div class="bar-value">5.0%</div></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Preference, comparable base</h3>
+            <p>Excluding the 13 respondents who do not own 10400 leaves n=128. On that base, 70.3% prefer 10401 or like both equally, 19.5% prefer 10400, 4.7% dislike both, and 5.5% selected another brand/style.</p>
+            <p style="margin-top:10px">This preference signal is positive, but it does not override the failing fit, comfort, support, DDD+, and underband findings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <header>
+        <div><h2>Method and Audit Notes</h2></div>
+        <p class="section-note">Source: C:\Users\maudi\Desktop\10401 Sweetheart Strapless Bra Feedback Survey.csv</p>
+      </header>
+      <div class="section-body">
+        <div class="method-grid">
+          <div class="method"><b>Raw rows</b>142 CSV rows; the SurveyMonkey answer-choice row was excluded, leaving 141 respondent rows.</div>
+          <div class="method"><b>Partial data</b>Every metric uses the denominator for respondents who answered that specific question.</div>
+          <div class="method"><b>Rounding</b>All displayed ratings and percentages are rounded to one decimal place.</div>
+          <div class="method"><b>Threshold</b>70.0% is the passable threshold for positive-response metrics.</div>
+        </div>
+        <div class="divider"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Audit item</th><th>Confirmed value</th><th>Why it changed from the pasted report</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>M underband too tight</td><td>5/17 = 29.4%</td><td>The pasted report used 4/17 or 25.0%; raw data has five M respondents selecting "Too tight."</td></tr>
+              <tr><td>Total band too tight</td><td>28/139 = 20.1%</td><td>Correcting M from four to five increases total tight-band count from 27 to 28.</td></tr>
+              <tr><td>DDD+ total</td><td>32 respondents</td><td>DDD+ is based on DDD/DDDD plus explicit E-K cup markers in the open-text usual bra-size field.</td></tr>
+              <tr><td>DDD+ support base</td><td>30 respondents</td><td>Two DDD+ respondents skipped the support/lift question, so support uses n=30 for DDD+.</td></tr>
+              <tr><td>10400 benchmark averages</td><td>Omitted</td><td>The provided CSV contains preference vs. 10400 but not the prior 10400 average-rating benchmark source.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="footnote">The straps question includes two "Haven't tried the bra yet" selections, but both rows contain product ratings and fit answers. Per the partial-data rule, their answered metric responses are included.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
