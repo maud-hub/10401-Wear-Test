@@ -82,7 +82,8 @@
     }
 
     .page {
-      width: min(1180px, calc(100% - 32px));
+      width: calc(100% - 32px);
+      max-width: 1180px;
       margin: 0 auto;
       padding: 30px 0 64px;
       min-width: 0;
@@ -177,6 +178,8 @@
       color: var(--muted);
       font-size: 12px;
       text-align: right;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
     .section-body { padding: 22px; }
 
@@ -184,6 +187,9 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
+    }
+    .artifact-cards {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
     .card {
       min-height: 118px;
@@ -206,6 +212,7 @@
       line-height: 1;
       font-weight: 850;
       color: var(--navy);
+      white-space: nowrap;
     }
     .card.critical .value { color: var(--red); }
     .card.good .value { color: var(--green); }
@@ -214,17 +221,20 @@
       color: var(--muted);
       font-size: 12px;
       font-weight: 750;
+      white-space: nowrap;
     }
     .label {
       margin-top: 10px;
       color: var(--ink);
       font-size: 13px;
       font-weight: 750;
+      overflow-wrap: anywhere;
     }
     .sub {
       margin-top: 3px;
       color: var(--muted);
       font-size: 12px;
+      overflow-wrap: anywhere;
     }
     .status {
       display: inline-flex;
@@ -412,6 +422,75 @@
       color: var(--muted);
       font-size: 12px;
     }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+    .feature-list {
+      display: grid;
+      gap: 9px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .feature-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface-2);
+    }
+    .feature-row strong {
+      color: var(--ink);
+      font-size: 13px;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+    .score-pill,
+    .confidence-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 26px;
+      min-width: 58px;
+      padding: 0 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 850;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .score-pill.good,
+    .score-cell.good { background: oklch(92% 0.055 155); color: oklch(32% 0.11 155); }
+    .score-pill.warn,
+    .score-cell.warn { background: oklch(94% 0.065 78); color: oklch(39% 0.1 70); }
+    .score-pill.bad,
+    .score-cell.bad { background: oklch(93% 0.065 20); color: oklch(38% 0.15 20); }
+    .confidence-pill {
+      min-width: 82px;
+      background: oklch(90% 0.016 255);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 10px;
+    }
+    .confidence-pill.confident {
+      background: oklch(92% 0.055 155);
+      color: oklch(32% 0.11 155);
+    }
+    .confidence-pill.provisional {
+      background: oklch(94% 0.065 78);
+      color: oklch(39% 0.1 70);
+    }
+    .score-cell {
+      font-weight: 850;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
     .compare-snapshot {
       display: grid;
       gap: 12px;
@@ -535,6 +614,8 @@
       .brand { min-width: 0; flex-wrap: wrap; }
       .navlinks { margin-left: 0; max-width: 100%; }
       .report-head, .two-col, .three-col { grid-template-columns: 1fr; }
+      .artifact-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .feature-grid { grid-template-columns: 1fr; }
       .compare-head { display: none; }
       .compare-row {
         grid-template-columns: 1fr;
@@ -558,9 +639,11 @@
       .section-note { text-align: left; }
     }
     @media (max-width: 560px) {
-      .page { width: min(100% - 20px, 1180px); padding-top: 18px; }
+      .page { width: calc(100% - 20px); padding-top: 18px; }
       h1 { font-size: 26px; }
-      .cards { grid-template-columns: 1fr; }
+      .cards, .artifact-cards { grid-template-columns: 1fr; }
+      .feature-row { grid-template-columns: 1fr; gap: 7px; padding: 8px; }
+      .score-pill { min-width: 48px; padding: 0 7px; }
       .bar-row { grid-template-columns: minmax(72px, 0.9fr) minmax(92px, 1.4fr) 48px; gap: 8px; }
       .stack-row { grid-template-columns: 72px minmax(0, 1fr); }
       .section-body, .section > header { padding: 16px; }
@@ -584,6 +667,7 @@
     <div class="brand">10401 Wear-Test <span>Final raw-data audit</span></div>
     <div class="navlinks">
       <a href="#decision">Decision</a>
+      <a href="#metrics">Metrics</a>
       <a href="#fit">Fit</a>
       <a href="#ddd">DDD+</a>
       <a href="#underband">Underband</a>
@@ -606,59 +690,110 @@
       </aside>
     </section>
 
-    <section class="section">
+    <section class="section" id="metrics">
       <header>
         <div>
-          <h2>Executive Summary</h2>
+          <h2>Main Metrics Artifact</h2>
         </div>
-        <p class="section-note">All displayed ratings and percentages are rounded to one decimal place from respondent-level raw data.</p>
+        <p class="section-note">Green = target met. Yellow = watch. Red = fail. Confident n>=10.</p>
       </header>
       <div class="section-body">
-        <div class="cards">
-          <article class="card critical">
+        <div class="cards artifact-cards">
+          <article class="card good">
+            <div class="metric"><div class="value">4.1</div><div class="unit">/5</div></div>
+            <div class="label">Overall rating</div>
+            <div class="sub">n=140</div>
+          </article>
+          <article class="card warn">
             <div class="metric"><div class="value">68.6%</div><div class="unit">n=140</div></div>
             <div class="label">Overall rated 4-5</div>
-            <div class="sub"><span class="status fail">Below 70.0%</span> Avg rating 4.1/5.0</div>
+            <div class="sub"><span class="status watch">Watch</span> Below 70.0%</div>
           </article>
-          <article class="card critical">
+          <article class="card warn">
+            <div class="metric"><div class="value">3.8</div><div class="unit">/5</div></div>
+            <div class="label">Fit rating</div>
+            <div class="sub">n=140</div>
+          </article>
+          <article class="card warn">
             <div class="metric"><div class="value">65.7%</div><div class="unit">n=140</div></div>
             <div class="label">Fit rated 4-5</div>
-            <div class="sub"><span class="status fail">Below 70.0%</span> Avg fit 3.8/5.0</div>
+            <div class="sub"><span class="status watch">Watch</span> Below 70.0%</div>
           </article>
-          <article class="card critical">
+          <article class="card warn">
+            <div class="metric"><div class="value">61.4%</div><div class="unit">n=140</div></div>
+            <div class="label">True-to-size</div>
+            <div class="sub">24.3% say runs small</div>
+          </article>
+          <article class="card warn">
+            <div class="metric"><div class="value">3.7</div><div class="unit">/5</div></div>
+            <div class="label">Comfort rating</div>
+            <div class="sub">n=137</div>
+          </article>
+          <article class="card warn">
             <div class="metric"><div class="value">61.3%</div><div class="unit">n=137</div></div>
             <div class="label">Comfort rated 4-5</div>
-            <div class="sub"><span class="status fail">Below 70.0%</span> Avg comfort 3.7/5.0</div>
-          </article>
-          <article class="card good">
-            <div class="metric"><div class="value">72.7%</div><div class="unit">n=132</div></div>
-            <div class="label">Ranked top 2 vs. other bras</div>
-            <div class="sub"><span class="status pass">Passes</span> Best or better than average</div>
+            <div class="sub"><span class="status watch">Watch</span> Below 70.0%</div>
           </article>
         </div>
 
         <div class="divider"></div>
 
-        <div class="two-col">
+        <div class="feature-grid">
           <div class="panel">
-            <h3>What is working</h3>
-            <div class="bar-list threshold-line">
-              <div class="bar-row"><div class="bar-label">Neckline love</div><div class="bar-track"><div class="bar-fill green" style="--value:81.2"></div></div><div class="bar-value">81.2%</div></div>
-              <div class="bar-row"><div class="bar-label">Smooth under clothing</div><div class="bar-track"><div class="bar-fill green" style="--value:84.1"></div></div><div class="bar-value">84.1%</div></div>
-              <div class="bar-row"><div class="bar-label">Underband stays</div><div class="bar-track"><div class="bar-fill green" style="--value:86.5"></div></div><div class="bar-value">86.5%</div></div>
-              <div class="bar-row"><div class="bar-label">Anti-slip 4-5</div><div class="bar-track"><div class="bar-fill green" style="--value:80.3"></div></div><div class="bar-value">80.3%</div></div>
-            </div>
+            <h3>Top features / benefits</h3>
+            <ul class="feature-list">
+              <li class="feature-row"><strong>Sweetheart neckline rating</strong><span class="score-pill good">4.4</span></li>
+              <li class="feature-row"><strong>Underband does not dig</strong><span class="score-pill good">87.2%</span></li>
+              <li class="feature-row"><strong>Underband stays in place</strong><span class="score-pill good">86.5%</span></li>
+              <li class="feature-row"><strong>Neckline flat / mostly flat</strong><span class="score-pill good">84.2%</span></li>
+              <li class="feature-row"><strong>Smooth under clothing</strong><span class="score-pill good">84.1%</span></li>
+              <li class="feature-row"><strong>Sewn-in cups rating</strong><span class="score-pill good">4.2</span></li>
+              <li class="feature-row"><strong>Anti-slip silicone rating</strong><span class="score-pill good">4.1</span></li>
+              <li class="feature-row"><strong>Minimal or no adjustments</strong><span class="score-pill good">79.1%</span></li>
+            </ul>
           </div>
           <div class="panel">
-            <h3>What blocks bulk as-is</h3>
-            <div class="bar-list threshold-line">
-              <div class="bar-row"><div class="bar-label">Support right</div><div class="bar-track"><div class="bar-fill red" style="--value:61.7"></div></div><div class="bar-value">61.7%</div></div>
-              <div class="bar-row"><div class="bar-label">True to size</div><div class="bar-track"><div class="bar-fill red" style="--value:61.4"></div></div><div class="bar-value">61.4%</div></div>
-              <div class="bar-row"><div class="bar-label">DDD+ fit 4-5</div><div class="bar-track"><div class="bar-fill red" style="--value:43.8"></div></div><div class="bar-value">43.8%</div></div>
-              <div class="bar-row"><div class="bar-label">DDD+ support right</div><div class="bar-track"><div class="bar-fill red" style="--value:40.0"></div></div><div class="bar-value">40.0%</div></div>
-            </div>
+            <h3>Lowest features / benefits</h3>
+            <ul class="feature-list">
+              <li class="feature-row"><strong>Right support / lift</strong><span class="score-pill warn">61.7%</span></li>
+              <li class="feature-row"><strong>True-to-size</strong><span class="score-pill warn">61.4%</span></li>
+              <li class="feature-row"><strong>Comfort rated 4-5</strong><span class="score-pill warn">61.3%</span></li>
+              <li class="feature-row"><strong>Comfort rating</strong><span class="score-pill warn">3.7</span></li>
+              <li class="feature-row"><strong>Fit rating</strong><span class="score-pill warn">3.8</span></li>
+              <li class="feature-row"><strong>Side boning comfort rating</strong><span class="score-pill warn">3.9</span></li>
+            </ul>
           </div>
         </div>
+
+        <div class="divider"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Confidence</th>
+                <th class="num">Overall rating</th>
+                <th class="num">Overall 4-5</th>
+                <th class="num">Fit rating</th>
+                <th class="num">Fit 4-5</th>
+                <th class="num">True-to-size</th>
+                <th class="num">Comfort rating</th>
+                <th class="num">Comfort 4-5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>S <span class="small">(n=13)</span></td><td><span class="confidence-pill confident">Confident</span></td><td class="score-cell good">4.1</td><td class="score-cell warn">69.2%</td><td class="score-cell warn">3.6</td><td class="score-cell warn">69.2%</td><td class="score-cell warn">61.5%</td><td class="score-cell warn">3.3</td><td class="score-cell warn">61.5%</td></tr>
+              <tr><td>M <span class="small">(n=18)</span></td><td><span class="confidence-pill confident">Confident</span></td><td class="score-cell good">4.5</td><td class="score-cell good">88.2%</td><td class="score-cell good">4.1</td><td class="score-cell good">76.5%</td><td class="score-cell good">76.5%</td><td class="score-cell warn">3.9</td><td class="score-cell good">70.6%</td></tr>
+              <tr><td>L <span class="small">(n=28)</span></td><td><span class="confidence-pill confident">Confident</span></td><td class="score-cell good">4.0</td><td class="score-cell warn">64.3%</td><td class="score-cell warn">3.8</td><td class="score-cell good">71.4%</td><td class="score-cell good">71.4%</td><td class="score-cell warn">3.5</td><td class="score-cell warn">56.0%</td></tr>
+              <tr><td>XL <span class="small">(n=25)</span></td><td><span class="confidence-pill confident">Confident</span></td><td class="score-cell warn">3.7</td><td class="score-cell warn">60.0%</td><td class="score-cell warn">3.7</td><td class="score-cell warn">52.0%</td><td class="score-cell warn">60.0%</td><td class="score-cell warn">3.6</td><td class="score-cell warn">56.0%</td></tr>
+              <tr><td>2XL <span class="small">(n=24)</span></td><td><span class="confidence-pill confident">Confident</span></td><td class="score-cell good">4.3</td><td class="score-cell good">79.2%</td><td class="score-cell good">4.0</td><td class="score-cell warn">66.7%</td><td class="score-cell warn">62.5%</td><td class="score-cell warn">3.9</td><td class="score-cell warn">66.7%</td></tr>
+              <tr><td>3XL <span class="small">(n=25)</span></td><td><span class="confidence-pill confident">Confident</span></td><td class="score-cell good">4.2</td><td class="score-cell good">72.0%</td><td class="score-cell warn">3.9</td><td class="score-cell good">72.0%</td><td class="score-cell bad">48.0%</td><td class="score-cell warn">3.8</td><td class="score-cell warn">68.0%</td></tr>
+              <tr><td>4XL <span class="small">(n=8)</span></td><td><span class="confidence-pill provisional">Provisional</span></td><td class="score-cell warn">3.5</td><td class="score-cell bad">25.0%</td><td class="score-cell warn">3.5</td><td class="score-cell bad">37.5%</td><td class="score-cell bad">37.5%</td><td class="score-cell warn">3.6</td><td class="score-cell bad">37.5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="footnote">Percentages and ratings are rounded to one decimal from answered bases. Size confidence is based on received-size n; 4XL is shown but should be read as directional.</p>
 
         <div class="callout" style="margin-top:18px">
           <strong>Conclusion:</strong> the 10401 has a viable design proposition, but it is not production-ready without targeted changes. The most consequential defects are DDD+ support/lift and cup depth, plus underband tightness at S, M, 3XL, and 4XL.
