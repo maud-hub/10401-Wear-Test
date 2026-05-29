@@ -297,6 +297,7 @@
     tbody tr:nth-child(even) td { background: oklch(97% 0.008 255); }
     .num { text-align: right; font-variant-numeric: tabular-nums; }
     .bad { color: var(--red); font-weight: 800; }
+    .warn-text { color: var(--amber); font-weight: 800; }
     .good-text { color: var(--green); font-weight: 800; }
     .muted { color: var(--muted); }
     .small { font-size: 12px; color: var(--muted); }
@@ -438,6 +439,7 @@
     .compare-cell.benchmark { background: oklch(93% 0.025 255); }
     .compare-cell.all { background: oklch(96% 0.032 20); }
     .compare-cell.clean { background: oklch(95.5% 0.035 170); }
+    .compare-cell.clean.watch { background: oklch(96% 0.045 78); }
     .compare-head .compare-cell {
       background: var(--navy);
       color: oklch(96% 0.01 255);
@@ -469,6 +471,7 @@
     }
     .compare-cell.all .compare-value { color: var(--red); }
     .compare-cell.clean .compare-value { color: var(--green); }
+    .compare-cell.clean.watch .compare-value { color: var(--amber); }
     .gap-badge {
       display: flex;
       justify-content: center;
@@ -753,7 +756,7 @@
               <tr><td>Overall rated 4-5</td><td class="num bad">50.0%</td><td class="num good-text">74.1%</td><td class="num bad">-24.1pp</td><td>Non-DDD+ passes; DDD+ clearly fails.</td></tr>
               <tr><td>Fit rating avg</td><td class="num bad">3.2 (n=32)</td><td class="num good-text">4.0 (n=108)</td><td class="num bad">-0.8</td><td>Largest average-rating gap.</td></tr>
               <tr><td>Fit rated 4-5</td><td class="num bad">43.8%</td><td class="num good-text">72.2%</td><td class="num bad">-28.4pp</td><td>Fit fails for DDD+ but passes for non-DDD+.</td></tr>
-              <tr><td>Comfort rated 4-5</td><td class="num bad">46.9%</td><td class="num">65.7%</td><td class="num bad">-18.8pp</td><td>Comfort is below threshold in both groups, worse in DDD+.</td></tr>
+              <tr><td>Comfort rated 4-5</td><td class="num bad">46.9%</td><td class="num warn-text">65.7%</td><td class="num bad">-18.8pp</td><td>Comfort is below threshold in both groups, worse in DDD+.</td></tr>
               <tr><td>Runs small</td><td class="num bad">34.4%</td><td class="num">21.3%</td><td class="num bad">+13.1pp</td><td>DDD+ are more likely to need a size-up.</td></tr>
               <tr><td>Band too tight</td><td class="num">15.6%</td><td class="num">21.5%</td><td class="num good-text">-5.9pp</td><td>Band tightness is not DDD+-driven.</td></tr>
               <tr><td>Cups too small</td><td class="num bad">46.9%</td><td class="num">18.7%</td><td class="num bad">+28.2pp</td><td>Main DDD+ product issue.</td></tr>
@@ -895,14 +898,14 @@
             <div class="compare-cell benchmark"><div class="compare-value">4.2</div><div class="compare-note">2XL and 4XL rated highest</div></div>
             <div class="compare-cell metric"><div class="compare-metric">Fit Rating</div><div class="gap-badge bad"><span>-0.47, L and XL driving gap</span></div></div>
             <div class="compare-cell all"><div class="compare-value">3.7</div><div class="compare-note">63% rated 4 or 5</div></div>
-            <div class="compare-cell clean"><div class="compare-value">3.9</div><div class="compare-note">70% rated 4 or 5, +0.21 excl. DDD+</div></div>
+            <div class="compare-cell clean watch"><div class="compare-value">3.9</div><div class="compare-note">70% rated 4 or 5, +0.21 excl. DDD+</div></div>
           </div>
 
           <div class="compare-row">
             <div class="compare-cell benchmark"><div class="compare-value">4.3</div><div class="compare-note">S and 3XL rated lowest</div></div>
             <div class="compare-cell metric"><div class="compare-metric">Comfort</div><div class="gap-badge bad"><span>-0.83, biggest gap</span></div></div>
             <div class="compare-cell all"><div class="compare-value">3.5</div><div class="compare-note">59% rated 4 or 5</div></div>
-            <div class="compare-cell clean"><div class="compare-value">3.7</div><div class="compare-note">64% rated 4 or 5, +0.21 excl. DDD+</div></div>
+            <div class="compare-cell clean watch"><div class="compare-value">3.7</div><div class="compare-note">64% rated 4 or 5, +0.21 excl. DDD+</div></div>
           </div>
 
           <div class="compare-row">
@@ -916,7 +919,7 @@
             <div class="compare-cell benchmark"><div class="compare-value">64%</div><div class="compare-note">with straps</div></div>
             <div class="compare-cell metric"><div class="compare-metric">Support Adequate</div><div class="gap-badge"><span>-6pp, L=60% and XL=50% flag</span></div></div>
             <div class="compare-cell all"><div class="compare-value">58%</div><div class="compare-note">42% say not enough</div></div>
-            <div class="compare-cell clean"><div class="compare-value">65%</div><div class="compare-note">35% say not enough, +7pp excl. DDD+</div></div>
+            <div class="compare-cell clean watch"><div class="compare-value">65%</div><div class="compare-note">35% say not enough, +7pp excl. DDD+</div></div>
           </div>
 
           <div class="compare-row">
